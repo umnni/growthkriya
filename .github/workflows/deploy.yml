@@ -33,8 +33,18 @@ jobs:
       - name: Build site
         run: npm run build -- --base="/${{ github.event.repository.name }}/"
 
-      - name: Support client-side routes
-        run: cp dist/index.html dist/404.html
+      - name: Configure client-side route fallback
+        env:
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
+        run: |
+          cat > dist/404.html <<EOF
+          <!doctype html>
+          <html><head><meta charset="utf-8"><script>
+          const base = "/${REPOSITORY_NAME}";
+          const route = window.location.pathname.slice(base.length) + window.location.search + window.location.hash;
+          window.location.replace(base + "/?__github_pages_route=" + encodeURIComponent(route));
+          </script></head><body></body></html>
+          EOF
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
