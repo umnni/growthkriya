@@ -87,4 +87,4 @@ function SiteLayout() {
     <Footer />
   </>;
 }
-export default function App() {return <BrowserRouter><SiteLayout/></BrowserRouter>;}
+export default function App() {return <BrowserRouter basename={import.meta.env.BASE_URL}><SiteLayout/></BrowserRouter>;}
