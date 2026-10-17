@@ -1,0 +1,709 @@
+
+@import "tailwindcss";
+
+/* =====================================================
+   GROWTH KRIYA - GLOBAL STYLES
+===================================================== */
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #1a1d1d;
+  background: #f6f5f0;
+  font-synthesis: none;
+
+  --primary: #00004d;
+  --primary-hover: #292987;
+  --primary-light: #cbd7ff;
+  --primary-soft: #e5eaff;
+
+  --text-dark: #191b25;
+  --text-muted: #686b7c;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: #cbd7ff;
+  color: #00004d;
+}
+
+/* =====================================================
+   TIPTAP EDITOR - WRAPPER
+===================================================== */
+
+.gk-editor-shell {
+  width: 100%;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #dfe1ed;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gk-editor-body {
+  width: 100%;
+  min-width: 0;
+  background: #ffffff;
+}
+
+/* =====================================================
+   TIPTAP - ACTUAL EDITABLE AREA
+===================================================== */
+
+.gk-editor-body .ProseMirror,
+.gk-tiptap-content {
+  display: block;
+  width: 100%;
+  min-height: 440px;
+
+  box-sizing: border-box;
+  padding: 28px 30px;
+
+  background: #ffffff;
+  color: #292b39;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+
+  border: none;
+  outline: none;
+
+  cursor: text;
+  caret-color: #00004d;
+
+  user-select: text;
+  -webkit-user-select: text;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.gk-editor-body .ProseMirror:focus,
+.gk-tiptap-content:focus,
+.gk-editor-body .ProseMirror-focused {
+  outline: none;
+  border: none;
+}
+
+.gk-editor-body .ProseMirror[contenteditable="true"] {
+  pointer-events: auto;
+  cursor: text;
+  -webkit-user-modify: read-write;
+}
+
+/* =====================================================
+   EDITOR PLACEHOLDER
+===================================================== */
+
+.gk-editor-body
+  .ProseMirror
+  p.is-editor-empty:first-child::before {
+  content: "Start writing your blog here...";
+  color: #a0a3b5;
+
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* =====================================================
+   SHARED EDITOR AND PUBLIC BLOG STYLES
+===================================================== */
+
+.gk-tiptap-content,
+.gk-blog-content {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+
+  color: #292b39;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* =====================================================
+   PARAGRAPHS
+===================================================== */
+
+.gk-tiptap-content p,
+.gk-blog-content p {
+  margin: 0 0 20px;
+  line-height: 1.9;
+}
+
+.gk-tiptap-content > p:last-child,
+.gk-blog-content > p:last-child {
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+.gk-tiptap-content h1,
+.gk-blog-content h1 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  margin: 32px 0 20px;
+}
+
+.gk-tiptap-content h2,
+.gk-blog-content h2 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+  margin: 30px 0 18px;
+}
+
+.gk-tiptap-content h3,
+.gk-blog-content h3 {
+  font-size: 27px;
+  font-weight: 750;
+  line-height: 1.35;
+  margin: 25px 0 15px;
+}
+
+.gk-tiptap-content h4,
+.gk-blog-content h4 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 20px 0 12px;
+}
+
+.gk-tiptap-content > h1:first-child,
+.gk-tiptap-content > h2:first-child,
+.gk-tiptap-content > h3:first-child,
+.gk-tiptap-content > h4:first-child,
+.gk-blog-content > h1:first-child,
+.gk-blog-content > h2:first-child,
+.gk-blog-content > h3:first-child,
+.gk-blog-content > h4:first-child {
+  margin-top: 0;
+}
+
+/* =====================================================
+   TEXT FORMATTING
+===================================================== */
+
+.gk-tiptap-content strong,
+.gk-blog-content strong,
+.gk-tiptap-content b,
+.gk-blog-content b {
+  font-weight: 700;
+}
+
+.gk-tiptap-content em,
+.gk-blog-content em,
+.gk-tiptap-content i,
+.gk-blog-content i {
+  font-style: italic;
+}
+
+.gk-tiptap-content u,
+.gk-blog-content u {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.gk-tiptap-content s,
+.gk-blog-content s,
+.gk-tiptap-content strike,
+.gk-blog-content strike {
+  text-decoration: line-through;
+}
+
+/* =====================================================
+   FONT FAMILY AND FONT SIZE
+===================================================== */
+
+/*
+  TipTap text styles are saved as inline styles.
+
+  Examples:
+  <span style="font-family: Georgia">
+  <span style="font-size: 24px">
+
+  No font-family or font-size override is applied
+  to these spans, so custom formatting stays intact.
+*/
+
+.gk-tiptap-content span,
+.gk-blog-content span {
+  overflow-wrap: anywhere;
+}
+
+/* Compatibility for old browser-generated font tags */
+
+.gk-tiptap-content font[size="1"],
+.gk-blog-content font[size="1"] {
+  font-size: 10px;
+}
+
+.gk-tiptap-content font[size="2"],
+.gk-blog-content font[size="2"] {
+  font-size: 12px;
+}
+
+.gk-tiptap-content font[size="3"],
+.gk-blog-content font[size="3"] {
+  font-size: 16px;
+}
+
+.gk-tiptap-content font[size="4"],
+.gk-blog-content font[size="4"] {
+  font-size: 18px;
+}
+
+.gk-tiptap-content font[size="5"],
+.gk-blog-content font[size="5"] {
+  font-size: 24px;
+}
+
+.gk-tiptap-content font[size="6"],
+.gk-blog-content font[size="6"] {
+  font-size: 32px;
+}
+
+.gk-tiptap-content font[size="7"],
+.gk-blog-content font[size="7"] {
+  font-size: 40px;
+}
+
+/* =====================================================
+   TEXT ALIGNMENT
+===================================================== */
+
+.gk-tiptap-content [style*="text-align: center"],
+.gk-blog-content [style*="text-align: center"] {
+  text-align: center;
+}
+
+.gk-tiptap-content [style*="text-align: right"],
+.gk-blog-content [style*="text-align: right"] {
+  text-align: right;
+}
+
+.gk-tiptap-content [style*="text-align: left"],
+.gk-blog-content [style*="text-align: left"] {
+  text-align: left;
+}
+
+.gk-tiptap-content [style*="text-align: justify"],
+.gk-blog-content [style*="text-align: justify"] {
+  text-align: justify;
+}
+
+/* =====================================================
+   BULLET AND NUMBERED LISTS
+===================================================== */
+
+.gk-tiptap-content ul,
+.gk-blog-content ul {
+  list-style-type: disc;
+  list-style-position: outside;
+
+  padding-left: 28px;
+  margin: 16px 0 25px;
+}
+
+.gk-tiptap-content ol,
+.gk-blog-content ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+
+  padding-left: 28px;
+  margin: 16px 0 25px;
+}
+
+.gk-tiptap-content li,
+.gk-blog-content li {
+  display: list-item;
+  margin-bottom: 9px;
+  padding-left: 5px;
+  line-height: 1.8;
+}
+
+.gk-tiptap-content li p,
+.gk-blog-content li p {
+  margin-bottom: 5px;
+}
+
+.gk-tiptap-content ul ul,
+.gk-blog-content ul ul {
+  list-style-type: circle;
+  margin: 8px 0;
+}
+
+.gk-tiptap-content ol ol,
+.gk-blog-content ol ol {
+  list-style-type: lower-alpha;
+  margin: 8px 0;
+}
+
+.gk-tiptap-content ul ol,
+.gk-blog-content ul ol {
+  list-style-type: decimal;
+}
+
+.gk-tiptap-content ol ul,
+.gk-blog-content ol ul {
+  list-style-type: disc;
+}
+
+/* =====================================================
+   BLOCKQUOTES
+===================================================== */
+
+.gk-tiptap-content blockquote,
+.gk-blog-content blockquote {
+  padding: 20px 25px;
+  margin: 25px 0;
+
+  border-left: 4px solid #00004d;
+  background: #eef0fa;
+  border-radius: 0 12px 12px 0;
+
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.8;
+  color: #00004d;
+}
+
+.gk-tiptap-content blockquote p,
+.gk-blog-content blockquote p {
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   TEXT COLOURS AND HIGHLIGHTS
+===================================================== */
+
+/*
+  TipTap stores selected text colours directly
+  in HTML inline style attributes.
+
+  Avoid setting forced colours on nested spans.
+*/
+
+.gk-tiptap-content mark,
+.gk-blog-content mark {
+  padding: 1px 3px;
+  border-radius: 3px;
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* =====================================================
+   LINKS
+===================================================== */
+
+.gk-tiptap-content a,
+.gk-blog-content a {
+  color: #292987;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+.gk-tiptap-content a:hover,
+.gk-blog-content a:hover {
+  color: #00004d;
+}
+
+.gk-tiptap-content a {
+  cursor: pointer;
+}
+
+/* =====================================================
+   HORIZONTAL DIVIDER
+===================================================== */
+
+.gk-tiptap-content hr,
+.gk-blog-content hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #dfe2ec;
+  margin: 32px 0;
+}
+
+/* =====================================================
+   SUBSCRIPT AND SUPERSCRIPT
+===================================================== */
+
+.gk-tiptap-content sub,
+.gk-blog-content sub {
+  vertical-align: sub;
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+.gk-tiptap-content sup,
+.gk-blog-content sup {
+  vertical-align: super;
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+/* =====================================================
+   INLINE CODE
+===================================================== */
+
+.gk-tiptap-content code,
+.gk-blog-content code {
+  background: #eef0fa;
+  color: #00004d;
+
+  padding: 2px 6px;
+  border-radius: 5px;
+
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.9em;
+}
+
+/* =====================================================
+   CODE BLOCKS
+===================================================== */
+
+.gk-tiptap-content pre,
+.gk-blog-content pre {
+  background: #17172b;
+  color: #f5f5ff;
+
+  padding: 20px;
+  margin: 24px 0;
+
+  border-radius: 12px;
+  overflow-x: auto;
+
+  font-family: Consolas, Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.gk-tiptap-content pre code,
+.gk-blog-content pre code {
+  background: transparent;
+  color: inherit;
+
+  padding: 0;
+  border-radius: 0;
+
+  font-size: inherit;
+  white-space: pre;
+}
+
+/* =====================================================
+   IMAGES
+===================================================== */
+
+.gk-tiptap-content img,
+.gk-blog-content img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+
+  margin: 20px 0;
+  border-radius: 12px;
+}
+
+/* =====================================================
+   PUBLIC BLOG DETAILS
+===================================================== */
+
+.gk-blog-content {
+  width: 100%;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.9;
+
+  color: #45485b;
+  overflow-wrap: anywhere;
+}
+
+.gk-blog-content > :first-child {
+  margin-top: 0;
+}
+
+.gk-blog-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   EDITOR TEXT SELECTION
+===================================================== */
+
+.gk-editor-body .ProseMirror ::selection,
+.gk-tiptap-content ::selection,
+.gk-blog-content ::selection {
+  background: #cbd7ff;
+  color: #00004d;
+}
+
+.gk-editor-body .ProseMirror-selectednode {
+  outline: 2px solid #292987;
+  border-radius: 5px;
+}
+
+/* =====================================================
+   EDITOR TOOLBAR
+===================================================== */
+
+.gk-editor-shell button,
+.gk-editor-shell select,
+.gk-editor-shell input {
+  font-family: "DM Sans", sans-serif;
+}
+
+.gk-editor-shell button {
+  cursor: pointer;
+}
+
+.gk-editor-shell button:disabled {
+  cursor: not-allowed;
+}
+
+.gk-editor-shell select {
+  cursor: pointer;
+}
+
+/* =====================================================
+   TABLET RESPONSIVE
+===================================================== */
+
+@media (max-width: 1024px) {
+  .gk-editor-body .ProseMirror,
+  .gk-tiptap-content {
+    min-height: 380px;
+    padding: 24px;
+  }
+
+  .gk-blog-content {
+    font-size: 16px;
+  }
+}
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .gk-editor-body .ProseMirror,
+  .gk-tiptap-content {
+    min-height: 320px;
+    padding: 20px 16px;
+
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .gk-tiptap-content h1,
+  .gk-blog-content h1 {
+    font-size: 32px;
+  }
+
+  .gk-tiptap-content h2,
+  .gk-blog-content h2 {
+    font-size: 28px;
+  }
+
+  .gk-tiptap-content h3,
+  .gk-blog-content h3 {
+    font-size: 23px;
+  }
+
+  .gk-tiptap-content h4,
+  .gk-blog-content h4 {
+    font-size: 20px;
+  }
+
+  .gk-tiptap-content blockquote,
+  .gk-blog-content blockquote {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+
+  .gk-tiptap-content ul,
+  .gk-blog-content ul,
+  .gk-tiptap-content ol,
+  .gk-blog-content ol {
+    padding-left: 23px;
+  }
+
+  .gk-blog-content {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .gk-editor-shell {
+    border-radius: 12px;
+  }
+
+  .gk-editor-shell select {
+    max-width: 135px;
+    font-size: 11px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 480px) {
+  .gk-editor-body .ProseMirror,
+  .gk-tiptap-content {
+    min-height: 280px;
+    padding: 16px 13px;
+  }
+
+  .gk-tiptap-content h1,
+  .gk-blog-content h1 {
+    font-size: 28px;
+  }
+
+  .gk-tiptap-content h2,
+  .gk-blog-content h2 {
+    font-size: 25px;
+  }
+
+  .gk-tiptap-content h3,
+  .gk-blog-content h3 {
+    font-size: 21px;
+  }
+
+  .gk-editor-shell select {
+    max-width: 115px;
+  }
+
+  .gk-blog-content {
+    font-size: 14px;
+  }
+}
